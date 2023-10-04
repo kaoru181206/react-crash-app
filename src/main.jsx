@@ -1,16 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import App from './App.jsx'
 import './index.css'
-import NewPost from './components/NewPost.jsx';
+import NewPost, { action as newPostAction } from './routes/NewPost.jsx';
 import RootLayout from './routes/RootLayout.jsx';
+import Posts, { loader as postsLoaders } from './routes/Posts.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/', element: <RootLayout />, children: [
-      { path: '/', element: <App /> },
-      { path: '/create-post', element: <NewPost /> }
+      { path: '/', element: <Posts />,
+      loader: postsLoaders, 
+      children: [{ path: '/create-post', element: <NewPost />, action: newPostAction }] }
     ]
   },
 ]);
