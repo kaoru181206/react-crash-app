@@ -1,6 +1,5 @@
 import Post from "./Post";
 import classes from './PostsList.module.css';
-import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 function PostsList() {
@@ -10,7 +9,7 @@ function PostsList() {
         <>
             {posts.length > 0 &&
                 <ul className={classes.posts}>
-                    {posts.map(post => <Post key={post.body} author={post.author} body={post.body} />)}
+                    {posts.map(post => <Post id={post.id} key={post.id} author={post.author} body={post.body} />)}
                 </ul>}
 
             {posts.length === 0 &&

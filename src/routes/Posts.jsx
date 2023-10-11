@@ -17,6 +17,7 @@ function Posts() {
 export default Posts;
 
 // DataFetchを行う関数
+// 画面の表示前に実行される
 export async function loader() {
   const response = await fetch('http://localhost:8080/posts');
   const resData = await response.json();
